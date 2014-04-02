@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>Quick Queue</title>
+  </head>
+  <body>
+<!--     <form id="message_payload" action="index.html" method="post">
+      <input type="text" name="some_name" value="">
+      <input type="text" name="some_name" value="">
+      <input type="button" name="some_name" value="submit">
+    </form> -->
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io.connect('http://localhost');
+      socket.emit('message', { hello: 'data' });
+    </script>
+  </body>
+</html>
