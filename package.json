@@ -3,6 +3,12 @@
   "version"       : "0.0.1",
   "description"   : "Minimalist socket queue",
   "dependencies"  : {
+    "iron_mq"     : "0.2.3",
+    "mime"        : "~1.2.7",
     "socket.io"   : "~0.9.6"
+  },
+  "repository"    : {
+    "type"        : "git",
+    "url"         : "https://github.com/yaron/quick_queue.git"
   }
 }
