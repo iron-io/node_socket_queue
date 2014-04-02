@@ -9,6 +9,6 @@
   },
   "repository"    : {
     "type"        : "git",
-    "url"         : "https://github.com/yaron/quick_queue.git"
+    "url"         : "https://github.com/yaron/node_socket_queue.git"
   }
 }
