@@ -9,7 +9,7 @@ var config = {"token":process.env.IRON_TOKEN,
 
 var imq = new iron_mq.Client({token: config["token"], project_id: config["project_id"], queue_name: "test_socket_queue"});
 
-app.listen(8080);
+app.listen(process.env.PORT || 8080);
 
 function handler (req, res) {
   fs.readFile(__dirname + '/public/index.html',

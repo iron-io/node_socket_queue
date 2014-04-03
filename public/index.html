@@ -36,6 +36,8 @@
         socket.on('benchmark', function(data) {
           $('#benchmarks').append("<li> Took "+ data.totalTime/1000 + " seconds </li>")
         })
+
+        $('form')[0].reset();
       });
     </script>
   </body>
