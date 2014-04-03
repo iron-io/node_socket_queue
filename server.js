@@ -36,6 +36,11 @@ io.sockets.on('connection', function (socket) {
           res.end('Queue Posting Error');
         } else {
           socket.emit('response', { messageId: body });
+          count ++
+          if (count ===100){
+            var end = Date.now()
+            socket.emit('benchmark', { totalTime: (end - start) });
+          }
         }
       });
     }

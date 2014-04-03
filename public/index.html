@@ -12,6 +12,11 @@
       <input type="submit" name="submit" value="submit">
     </form>
 
+    <div>
+      <ul id="benchmarks">
+
+      </ul>
+    </div>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       $('form').on('submit', function(e) {
@@ -26,6 +31,10 @@
 
         socket.on('response', function(data) {
           console.log("Posted! message_id is " + data.messageId)
+        })
+
+        socket.on('benchmark', function(data) {
+          $('#benchmarks').append("<li> Took "+ data.totalTime/1000 + " seconds </li>")
         })
       });
     </script>
