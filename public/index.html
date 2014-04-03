@@ -26,7 +26,7 @@
         var value = $('#payload_value').val();
         payload[key] = value
 
-        var socket = io.connect('http://localhost');
+        var socket = io.connect('http://'+ process.env.APP_NAME +'.herokuapp.com/'|| 'http://localhost');
         socket.emit('message', payload);
 
         socket.on('response', function(data) {
