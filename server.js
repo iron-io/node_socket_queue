@@ -27,14 +27,17 @@ function handler (req, res) {
 io.sockets.on('connection', function (socket) {
   socket.on('message', function (data) {
     console.log(data);
-    imq.post(data, function (err, body) {
-      if (err) {
-        console.error(err);        res.end('Server Error');
-      } else {
-        console.log(body);
-      }
-    });
+    var count = 0
+    var start = Date.now()
+    for (var i = 0; i < 100; i++) {
+      imq.post(data, function (err, body) {
+        if (err) {
+          console.error(err);
+          res.end('Queue Posting Error');
+        } else {
+          socket.emit('response', { messageId: body });
+        }
+      });
+    }
   });
 });
-
-// IRON_TOKEN="rdGJ_MByJRU6f-On2JbL-1xfra8" IRON_PROJECT_ID="533c4876b67ea00009000024"

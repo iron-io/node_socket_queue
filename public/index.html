@@ -1,18 +1,33 @@
 <html>
   <head>
     <title>Quick Queue</title>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   </head>
   <body>
-<!--     <form id="message_payload" action="index.html" method="post">
-      <input type="text" name="some_name" value="">
-      <input type="text" name="some_name" value="">
-      <input type="button" name="some_name" value="submit">
-    </form> -->
+    <form id="message_payload" action="index.html" method="post">
+      <label for="key"> Key: </label>
+      <input type="text" name="key" id="payload_key">
+      <label for="value">Value: </label>
+      <input type="text" name="value" id="payload_value">
+      <input type="submit" name="submit" value="submit">
+    </form>
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
-      var socket = io.connect('http://localhost');
-      socket.emit('message', { hello: 'data' });
+      $('form').on('submit', function(e) {
+        e.preventDefault();
+        var payload = {}
+        var key = $('#payload_key').val();
+        var value = $('#payload_value').val();
+        payload[key] = value
+
+        var socket = io.connect('http://localhost');
+        socket.emit('message', payload);
+
+        socket.on('response', function(data) {
+          console.log("Posted! message_id is " + data.messageId)
+        })
+      });
     </script>
   </body>
 </html>
